@@ -11,7 +11,7 @@ const Banner = () => {
           <img src={bannerImg} alt="" />
           <div className="flex flex-col md:flex-row items-center justify-around -mt-14 gap-4">
             <div className="bg-white px-3 py-2 rounded-2xl flex items-center gap-3 shadow-sm w-64">
-              <img src="/images/b-food1.png" alt=""  className="rounded-2xl"/>
+              <img src="/images/home/b-food1.png" alt=""  className="rounded-2xl"/>
               <div className="space-y-1">
                 <h5>Spicy noodles</h5>
                 <div className="rating rating-sm">
@@ -52,7 +52,7 @@ const Banner = () => {
               </div>
             </div>
             <div className="bg-white px-3 py-2 rounded-2xl md:flex items-center gap-3 shadow-sm w-64 hidden">
-              <img src="/images/b-food1.png" alt=""  className="rounded-2xl"/>
+              <img src="/images/home/b-food1.png" alt=""  className="rounded-2xl"/>
               <div className="space-y-1">
                 <h5>Spicy noodles</h5>
                 <div className="rating rating-sm">

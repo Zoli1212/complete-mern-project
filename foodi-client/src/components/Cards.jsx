@@ -3,6 +3,7 @@ import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Cards = ({ item }) => {
+  // console.log(item)
   const [isHeartFilled, setIsHeartFilled] = useState(false);
 
   const handleHeartClick = () => {
@@ -28,7 +29,7 @@ const Cards = ({ item }) => {
         <p>Description of the item</p>
         <div className="card-actions justify-between items-center mt-2">
           <h5 className="font-semibold">
-            <span className="text-sm text-red">$</span>24.00
+            <span className="text-sm text-red">$ </span> {item.price}
           </h5>
           <button className="btn bg-green text-white">Add to Cart </button>
         </div>
