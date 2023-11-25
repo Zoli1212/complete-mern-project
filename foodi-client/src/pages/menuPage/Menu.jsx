@@ -175,7 +175,7 @@ const Menu = () => {
       </div>
 
        {/* Pagination */}
-       <div className="flex justify-center my-8">
+       <div className="flex justify-center my-8 flex-wrap gap-2">
         {Array.from({ length: Math.ceil(filteredItems.length / itemsPerPage) }).map((_, index) => (
           <button
             key={index + 1}
