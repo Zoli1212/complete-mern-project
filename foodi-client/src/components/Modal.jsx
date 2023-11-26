@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigation } from "react-router-dom";
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const Modal = () => {
+  const [errorMessage, seterrorMessage] = useState("");
   const { signUpWithGmail, login } = useContext(AuthContext);
 
   const location = useLocation();
@@ -15,7 +16,7 @@ const Modal = () => {
   //react hook form
   const {
     register,
-    handleSubmit,
+    handleSubmit, reset,
     formState: { errors },
   } = useForm();
 
@@ -28,13 +29,15 @@ const Modal = () => {
         const user = result.user;
         // console.log(user);
         alert("Login successful!");
+        document.getElementById("my_modal_5").close()
         navigate(from, { replace: true });
         // ...
       })
       .catch((error) => {
         const errorMessage = error.message;
+        seterrorMessage("Please provide valid email & password!");
       });
-
+      reset()
   };
 
   // login with google
@@ -80,7 +83,7 @@ const Modal = () => {
                 type="password"
                 placeholder="password"
                 className="input input-bordered"
-                {...register("password")}
+                {...register("password", { required: true })}
               />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover mt-2">
@@ -89,11 +92,17 @@ const Modal = () => {
               </label>
             </div>
 
-            {/* error message */}
-            <p>{errors.message}</p>
+            {/* show errors */}
+            {errorMessage ? (
+              <p className="text-red text-xs italic">
+                Provide a correct username & password.
+              </p>
+            ) : (
+              ""
+            )}
 
             {/* submit btn */}
-            <div className="form-control mt-5">
+            <div className="form-control mt-4">
               <input
                 type="submit"
                 className="btn bg-green text-white"

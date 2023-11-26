@@ -5,6 +5,7 @@ import Menu from "../pages/menuPage/Menu";
 import Signup from "../components/Signup";
 import Order from "../pages/dashboard/Order";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import UserProfile from "../pages/dashboard/UserProfile";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         {
           path: "/order",
           element:<PrivateRoute><Order/></PrivateRoute>
+        },
+        {
+          path: "/update-profile",
+          element: <UserProfile/>
         }
       ]
     },

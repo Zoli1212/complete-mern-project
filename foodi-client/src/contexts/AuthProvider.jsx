@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { createContext } from 'react';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import app from '../firebase/firebase.config';
@@ -25,13 +25,19 @@ const AuthProvider = ({children}) => {
     }
 
     const login = (email, password) =>{
-        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     const logOut = () =>{
         localStorage.removeItem('genius-token');
         return signOut(auth);
+    }
+
+    // update your profile
+    const updateUserProfile = (name, photoURL) => {
+      return  updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photoURL
+          })
     }
 
     useEffect( () =>{
@@ -52,7 +58,8 @@ const AuthProvider = ({children}) => {
         createUser, 
         login, 
         logOut,
-        signUpWithGmail
+        signUpWithGmail,
+        updateUserProfile
     }
 
     return (
